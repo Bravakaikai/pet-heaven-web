@@ -8,13 +8,50 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/login",
+    name: "login",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    alias: "/editProfile",
+    component: () =>
+      import(/* webpackChunkName: "signup" */ "../views/SignupView.vue"),
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/user/ProfileView.vue"),
+  },
+  {
+    path: "/shop",
+    name: "shop",
+    component: () =>
+      import(/* webpackChunkName: "shop" */ "../views/user/ShopView.vue"),
+  },
+  {
+    path: "/bag",
+    name: "bag",
+    component: () =>
+      import(/* webpackChunkName: "shop" */ "../views/user/BagView.vue"),
+  },
+  // admin
+  {
+    path: "/admin/user",
+    name: "userList",
+    component: () =>
+      import(/* webpackChunkName: "userList" */ "../views/admin/UserView.vue"),
+  },
+  {
+    path: "/admin/equipment",
+    name: "equipmentList",
+    component: () =>
+      import(
+        /* webpackChunkName: "equipmentList" */ "../views/admin/EquipmentView.vue"
+      ),
   },
 ];
 

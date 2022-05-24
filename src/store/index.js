@@ -1,9 +1,7 @@
-import { createStore } from "vuex";
+import user from "./modules/user";
+import equipment from "./modules/equipment";
 
-export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+export default {
+  user,
+  equipment,
+};
