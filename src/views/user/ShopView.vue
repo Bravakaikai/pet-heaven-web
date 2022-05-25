@@ -41,10 +41,10 @@ export default {
   setup() {
     const store = inject("store");
     const router = inject("router");
-    const { equipment, getAll } = store.equipment;
+    const { equipment, getShop } = store.equipment;
 
     onMounted(async () => {
-      const result = await getAll();
+      const result = await getShop();
       if (result === "login") router.replace({ name: "login" });
     });
 

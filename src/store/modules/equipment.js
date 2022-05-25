@@ -7,7 +7,7 @@ const state = reactive({
   bagList: [],
 });
 
-const getAll = () => {
+const getShop = () => {
   if (!userState.user.isLogin) return "login";
   return axios.get("/shop").then((res) => {
     Object.assign(state.equipmentList, res.data.message);
@@ -46,6 +46,12 @@ const sell = (payload) => {
 };
 
 // admin
+const getAll = () => {
+  return axios.get("/shop/equipment").then((res) => {
+    Object.assign(state.equipmentList, res.data.message);
+    return res.data;
+  });
+};
 const create = (payload) => {
   return axios.post("/shop/create", payload).then((res) => {
     return res.data;
@@ -64,11 +70,12 @@ const deleteEquipment = (id) => {
 
 export default {
   equipment: state,
-  getAll,
+  getShop,
   getBag,
   buy,
   eat,
   sell,
+  getAll,
   create,
   edit,
   deleteEquipment,
