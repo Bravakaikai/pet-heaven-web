@@ -77,7 +77,6 @@ export default {
         const result = await login(form);
         if (result?.status === "success") {
           user.userInfo.id = result.message;
-          user.userInfo.email = form.email;
           user.isLogin = true;
           router.replace({ name: "profile" });
         } else if (result.status === "not found") {

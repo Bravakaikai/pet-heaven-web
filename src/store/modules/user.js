@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import axios from "axios";
+import axios from "@/axios-base";
 
 const state = reactive({
   isLogin: !!sessionStorage.getItem("userId"),
@@ -56,7 +56,7 @@ const state = reactive({
 });
 
 const getAll = () => {
-  return axios.get("/user").then((res) => {
+  return axios.get("user").then((res) => {
     return res.data;
   });
 };
@@ -64,34 +64,34 @@ const getAll = () => {
 const getById = () => {
   state.userInfo.id = sessionStorage.getItem("userId");
   if (!state.userInfo.id) return "not found";
-  checkRoleValid();
-  return axios.get(`/user/${state.userInfo.id}`).then((res) => {
+  if (!state.userInfo.name) checkRoleValid();
+  return axios.get(`user/${state.userInfo.id}`).then((res) => {
     Object.assign(state.userInfo, res.data.message);
     return res.data;
   });
 };
 
 const login = (payload) => {
-  return axios.post("/login", payload).then((res) => {
+  return axios.post("login", payload).then((res) => {
     sessionStorage.setItem("userId", res.data.message);
     return res.data;
   });
 };
 
 const signup = (payload) => {
-  return axios.post("/signup", payload).then((res) => {
+  return axios.post("signup", payload).then((res) => {
     return res.data;
   });
 };
 
 const editInfo = (payload) => {
-  return axios.put("/editInfo", payload).then((res) => {
+  return axios.put("editInfo", payload).then((res) => {
     return res.data;
   });
 };
 
 const checkRoleValid = async () => {
-  return axios.get(`/checkRoleValid/${state.userInfo.id}`).then((res) => {
+  return axios.get(`checkRoleValid/${state.userInfo.id}`).then((res) => {
     state.isAdmin = res.data.message;
     return res.data.message;
   });
