@@ -73,6 +73,7 @@
 
 <script>
 import { ref, reactive, inject, onMounted } from "vue";
+import { notification } from "ant-design-vue";
 export default {
   name: "SignupView",
   beforeRouteEnter(to, from, next) {
@@ -149,7 +150,9 @@ export default {
               }
               return Promise.resolve();
             } else {
-              return Promise.reject(new Error("Please input your password"));
+              if (isEdited) return Promise.resolve();
+              else
+                return Promise.reject(new Error("Please input your password"));
             }
           },
           trigger: "change",
@@ -167,7 +170,11 @@ export default {
               }
               return Promise.resolve();
             } else {
-              return Promise.reject(new Error("Please confirm your password"));
+              if (isEdited) return Promise.resolve();
+              else
+                return Promise.reject(
+                  new Error("Please confirm your password")
+                );
             }
           },
           trigger: "change",
@@ -223,7 +230,13 @@ export default {
             pet: form.pet,
           });
           user.isLogin = true;
-          sessionStorage.setItem("userId", result.message);
+          if (!isEdited) sessionStorage.setItem("userId", result.message);
+          else {
+            notification.success({
+              message: "Edited successfully",
+              placement: "bottomRight ",
+            });
+          }
           router.replace({ name: "profile" });
         } else {
           Object.keys(result.message).forEach((key) => {
