@@ -14,7 +14,7 @@ module.exports = defineConfig({
     open: false, // 自動啟動瀏覽器
     proxy: {
       "/api": {
-        target: "http://localhost:8090/api", // 設置調用的接口域名接和端口
+        target: "https://localhost:8090/api", // 設置調用的接口域名接和端口
         changeOrigin: true, // 是否跨域
         pathRewrite: {
           "^/api": "", // 重寫路徑
