@@ -52,6 +52,7 @@
 
 <script>
 import { ref, reactive, inject } from "vue";
+import { encrypt } from "@/util/secret";
 export default {
   name: "LoginView",
   beforeRouteEnter(to, from, next) {
@@ -74,7 +75,11 @@ export default {
 
     const submit = () => {
       formRef?.value.validate().then(async () => {
-        const result = await login(form);
+        const payload = {
+          email: form.email,
+          password: encrypt(form.password),
+        };
+        const result = await login(payload);
         if (result?.status === "success") {
           user.userInfo.id = result.message;
           user.isLogin = true;

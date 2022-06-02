@@ -74,6 +74,7 @@
 <script>
 import { ref, reactive, inject, onMounted } from "vue";
 import { notification } from "ant-design-vue";
+import { encrypt } from "@/util/secret";
 export default {
   name: "SignupView",
   beforeRouteEnter(to, from, next) {
@@ -209,7 +210,7 @@ export default {
         let payload = {
           name: form.name,
           email: form.email,
-          password: form.password,
+          password: encrypt(form.password),
           pet: form.pet,
         };
 
