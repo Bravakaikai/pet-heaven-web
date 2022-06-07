@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { ref, reactive, inject, toRefs, onMounted } from "vue";
+import { ref, reactive, inject, toRefs } from "vue";
 import { notification } from "ant-design-vue";
 export default {
   name: "BuySellModal",
@@ -85,13 +85,6 @@ export default {
         },
       ],
     };
-
-    onMounted(async () => {
-      if (!user.userInfo.wallet) {
-        const result = await getById();
-        if (result?.status === "not found") router.replace({ name: "login" });
-      }
-    });
 
     const showModal = (val) => {
       Object.assign(equipment, val);
