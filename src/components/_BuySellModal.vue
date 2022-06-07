@@ -104,10 +104,8 @@ export default {
         confirmLoading.value = true;
 
         const payload = {
-          id: {
-            userId: user.userInfo.id,
-            equipmentId: equipment.id,
-          },
+          userId: user.userInfo.id,
+          equipmentId: equipment.id,
           amount: form.amount,
         };
 

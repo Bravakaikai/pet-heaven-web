@@ -72,26 +72,26 @@ const getById = () => {
 };
 
 const login = (payload) => {
-  return axios.post("login", payload).then((res) => {
+  return axios.post("user/login", payload).then((res) => {
     sessionStorage.setItem("userId", res.data.message);
     return res.data;
   });
 };
 
 const signup = (payload) => {
-  return axios.post("signup", payload).then((res) => {
+  return axios.post("user/signup", payload).then((res) => {
     return res.data;
   });
 };
 
 const editInfo = (payload) => {
-  return axios.put("editInfo", payload).then((res) => {
+  return axios.put("user/editInfo", payload).then((res) => {
     return res.data;
   });
 };
 
 const checkRoleValid = async () => {
-  return axios.get(`checkRoleValid/${state.userInfo.id}`).then((res) => {
+  return axios.get(`user/checkRoleValid/${state.userInfo.id}`).then((res) => {
     state.isAdmin = res.data.message;
     return res.data.message;
   });

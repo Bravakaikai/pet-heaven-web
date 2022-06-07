@@ -66,6 +66,7 @@ export default {
   name: "EquipmentModal",
   setup(props, { emit }) {
     const store = inject("store");
+    const { user } = store.user;
     const { create, edit } = store.equipment;
 
     const errorImage = (e) => {
@@ -163,11 +164,8 @@ export default {
           confirmLoading.value = true;
 
           const payload = {
-            id: form.id,
-            name: form.name,
-            description: form.description,
-            price: form.price,
-            imgUrl: form.imgUrl,
+            ...form,
+            userId: user.userInfo.id,
           };
 
           let result;

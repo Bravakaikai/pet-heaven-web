@@ -63,10 +63,8 @@ export default {
     const eatHandler = async (val) => {
       eatLoading.value = true;
       const result = await eat({
-        id: {
-          userId: user.userInfo.id,
-          equipmentId: val.id,
-        },
+        userId: user.userInfo.id,
+        equipmentId: val.id,
       });
 
       if (result.status === "success") {

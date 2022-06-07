@@ -3,6 +3,9 @@
     <h2 class="text-center mb-3">User List</h2>
     <a-table :columns="columns" :data-source="dataList">
       <template #bodyCell="{ column, text }">
+        <template v-if="column.dataIndex === 'password'">
+          {{ decrypt(text) }}
+        </template>
         <template v-if="column.dataIndex === 'createdDate'">
           {{ dateParser(text) }}
         </template>
@@ -16,6 +19,7 @@
 
 <script>
 import { ref, inject, computed, onMounted } from "vue";
+import { decrypt } from "@/util/secret";
 export default {
   name: "UserView",
   setup() {
@@ -106,6 +110,7 @@ export default {
     return {
       columns,
       dataList,
+      decrypt,
       dateParser,
     };
   },
