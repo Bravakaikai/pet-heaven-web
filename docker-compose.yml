@@ -15,3 +15,5 @@ services:
       - "80:80"
     depends_on:
       - web-api
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
