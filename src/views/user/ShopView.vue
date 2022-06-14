@@ -41,11 +41,13 @@ export default {
   setup() {
     const store = inject("store");
     const router = inject("router");
+    const { user, getById } = store.user;
     const { equipment, getShop } = store.equipment;
 
     onMounted(async () => {
       const result = await getShop();
       if (result === "login") router.replace({ name: "login" });
+      if (!user.userInfo.wallet) await getById();
     });
 
     const modal = ref();
