@@ -2,6 +2,8 @@
 
 User can feed a pet and buy their foods in the shop.
 
+If user buy or sell any food on web, user will receive notify by LINE chatbot.
+
 * Frontend: Vue 3 (Composition API)
 * Backend: Kotlin > [GitHub link](https://github.com/Bravakaikai/pet-heaven-api)
 * DataBase: PostgreSQL
