@@ -1,6 +1,6 @@
 # Pet Heaven Web (Game)
 
-User can feed a pet and buy their foods in the shop.
+User can feed a pet and buy their foods in the shopping mall.
 
 * Frontend: Vue 3 (Composition API)
 * Backend: Kotlin > [GitHub link](https://github.com/Bravakaikai/pet-heaven-api)
